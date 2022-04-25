@@ -1,29 +1,29 @@
-package com.callor.school.controller.domain;
+package com.callor.school.domain;
+
+
 /*
- * spring project 에서 VO 클래스를 선언할대는 
- * 필드 변수를 private 으로 선언하고
+ * spring project 에서 VO(DTO) 클래스를 선언할 때는
+ * 필드 변수를 private 로 선언하고
  * getter() & setter() 메서드를 선언하고
- * toString()메서드를 재 정의하고
- * 기본 생성자와 필드 생성자를 정의해둔다
- * 
+ * toString() 메서드를 재 정의하고
+ * 기본생성자와 필드 생성자를 정의해 둔다
  */
 public class StudentVO {
 
 	private String stNum; // 학번
-	private String stName;// 이름
+	private String stName; // 이름
 	private int intGrade; // 학년
-	private String stTel;// 전화번호
-	private String stAddr;// 주소
-	private String stDept;// 학과
+	private String stTel; // 전화번호
+	private String stAddr; // 주소
+	private String stDept; // 학과
 	
-	// 기본생성자
-	public StudentVO() {
-		
+	public StudentVO(){
 		
 	}
 	
-	//필드 생성자 :  source -> toString 밑에
+	
 	public StudentVO(String stNum, String stName, int intGrade, String stTel, String stAddr, String stDept) {
+		super();
 		this.stNum = stNum;
 		this.stName = stName;
 		this.intGrade = intGrade;
@@ -31,13 +31,7 @@ public class StudentVO {
 		this.stAddr = stAddr;
 		this.stDept = stDept;
 	}
-
-
-	@Override
-	public String toString() {
-		return "StudentVO [stNum=" + stNum + ", stName=" + stName + ", intGrade=" + intGrade + ", stTel=" + stTel
-				+ ", stAddr=" + stAddr + ", stDept=" + stDept + "]";
-	}
+	
 	public String getStNum() {
 		return stNum;
 	}
@@ -74,6 +68,12 @@ public class StudentVO {
 	public void setStDept(String stDept) {
 		this.stDept = stDept;
 	}
+	@Override
+	public String toString() {
+		return "StudentVO [stNum=" + stNum + ", stName=" + stName + ", intGrade=" + intGrade + ", stTel=" + stTel
+				+ ", stAddr=" + stAddr + ", stDept=" + stDept + "]";
+	}
+		
+		
 	
-
 }

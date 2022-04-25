@@ -4,15 +4,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.callor</groupId>
-	<artifactId>app</artifactId>
-	<name>SpMVC_002</name>
+	<artifactId>school</artifactId>
+	<name>SpMVC_003_SchoolV2</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>11</java-version>
 		<org.springframework-version>5.2.21.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.7.3</org.slf4j-version>
+		<org.slf4j-version>1.7.36</org.slf4j-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -53,6 +53,7 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.11</version>
 		</dependency>
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -99,7 +100,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>2.5.1</version>
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>

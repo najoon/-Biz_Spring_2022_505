@@ -2,72 +2,62 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%@ include file="/WEB-INF/views/include/include_head.jsp" %>
+<%@ include file="/WEB-INF/views/include/include_head.jsp"%>
 <style>
-	section {
+	section{
 		display: flex;
 		flex-direction: column;
 	}
-	article {
+	article{
 		width:80%;
 		margin:0 auto;
 	}
-	
-	label, input {
+	label, input{
 		display: inline-block;
-		padding:8px;
-		margin:5px 3px;
+		padding: 8px;
+		margin: 5px 3px;
 	}
-	
-	label {
+	label{
 		width: 30%;
 		text-align: right;
 	}
 	input {
-		width:60%;
+		width: 60%;
 	}
-	
 	fieldset {
-		border:1px solid blue;
-		padding:5px;
+		border: 1px solid blue;
+		padding: 5px;
 		border-radius: 10px;
 	}
-	
-	legend {
-		color:blue;
-		margin:0 30px;
-		padding:5px;
+	legend{
+		color: blue;
+		margin: 0 30px;
+		padding: 5px;
 	}
-	
-	form div {
-		width:90%;
+	form div{
+		width: 90%;
 		text-align: right;
 	}
 	
 </style>
 <body>
-	<%@ include file="/WEB-INF/views/include/include_header.jsp" %>
-	<%@ include file="/WEB-INF/views/include/include_nav.jsp" %>
+	<%@ include file="/WEB-INF/views/include/include_header.jsp"%>
+	<%@ include file="/WEB-INF/views/include/include_nav.jsp"%>
 	<section>
 		<article>
 			<form method="POST">
 				<fieldset>
 					<legend>학생정보 등록</legend>
-					
 					<label>학번</label>
-					<input type="text" placeholder="학번"/>
-
+					<input type="text" placeholder="학번">
 					<label>이름</label>
-					<input type="text" placeholder="이름"/>
-
+					<input type="text" placeholder="이름">
 					<label>학과</label>
-					<input type="text" placeholder="학과"/>
-
+					<input type="text" placeholder="학과">
 					<label>학년</label>
-					<input type="text" placeholder="학년"/>
-
+					<input type="text" placeholder="학년">
 					<label>주소</label>
-					<input type="text" placeholder="주소"/>
+					<input type="text" placeholder="주소">
 					
 					<div>
 						<button>저장</button>
@@ -78,6 +68,6 @@
 			</form>
 		</article>
 	</section>
-	<%@ include file="/WEB-INF/views/include/include_footer.jsp" %>
+	<%@ include file="/WEB-INF/views/include/include_footer.jsp"%>
 </body>
 </html>

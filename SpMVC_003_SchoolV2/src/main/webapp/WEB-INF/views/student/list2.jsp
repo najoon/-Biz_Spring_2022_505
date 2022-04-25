@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set value="${pageContext.request.contextPath}" var="rootPath"/>
+
+<%@ page import="java.util.List" %>
+<%@ page import="com.callor.school.domain.StudentVO" %>
 
 <!DOCTYPE html>
 <html>
@@ -62,7 +63,6 @@
 		box-shadow: 2px 2px 2px rgba(0,0,0,0.6)
 	}
 </style>
-<script src="${rootPath}/static/js/student.js"></script>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jsp"%>
 	<%@ include file="/WEB-INF/views/include/include_nav.jsp"%>
@@ -74,23 +74,30 @@
 				<th>이름</th>
 				<th>학과</th>
 				<th>학년</th>
+				<th>주소</th>
 			</tr>
-			<c:forEach items="${STUDENTS}" var="stVO">
+			<!-- 불편한 JSP (java연동) -->
+			<%
+			List<StudentVO> stList = (List<StudentVO>)request.getAttribute("STUDENTS");
+			for(int i = 0 ; i < 5 ; i++ ){
+			%>
 			<tr>
-				<td>${stVO.stNum}</td>
-				<td class="name" data-num="${stVO.stNum}">${stVO.stName}</td>
-				<td>${stVO.stDept}</td>
-				<td>${stVO.intGrade}</td>
+				<td>
+				<%= stList.get(i).getStName() %>
+				</td>
+				<td>${STUDENTS[0].stName}</td>
+				<td>${STUDENTS[0].stDept}</td>
+				<td>${STUDENTS[0].intGrade}</td>
+				<td>${STUDENTS[0].stAddr}</td>
 			</tr>
-			</c:forEach>
+			<%
+			}
+			%>
 		</table>
 		<div class="button-box">
-			<a href="${rootPath}/student/insert">학생정보 등록</a>
+			<a href="${pageContext.request.contextPath}/student/insert">학생정보 등록</a>
 		</div>
 	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jsp"%>
 </body>
-<script>
-	
-</script>
 </html>

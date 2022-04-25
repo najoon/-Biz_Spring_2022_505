@@ -24,12 +24,10 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("나는 home method 입니다");
 		
-		
-		model.addAttribute("serverTime", "2022-04-21 13:11" );
+		model.addAttribute("serverTime", "2022-04-21 13:11");
 		
 		return "home";
 	}
 	
-
-
+	
 }
