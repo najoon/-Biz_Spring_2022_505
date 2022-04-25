@@ -1,9 +1,13 @@
 package com.callor.app.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.callor.app.domain.StudentVO;
 import com.callor.app.service.StudentService;
 
 @Controller
@@ -27,16 +31,23 @@ public class StudentController {
 	//제어의 역전 ioc
 	public StudentController(StudentService stService) {
 		this.stService = stService;
-	
-		
 		
 	}
 	@RequestMapping(value="/student",method=RequestMethod.GET)
-	public String list() {
+	public String list(Model model) {
+		List<StudentVO>stList = stService.selectAll();
+		model.addAttribute("STUDENTS",stList);
+		
 		return "student/list_view";
 	}
-	
-	
+	@RequestMapping(value = "/student/detail",method=RequestMethod.GET)
+	public String detali(String stNum, Model model) {
+		
+		StudentVO stVO = stService.findById(stNum);
+		model.addAttribute("STUDENT",stVO);
+		return "student/detail";
+		
+	}
 	
 	@RequestMapping(value="/student/insert", 
 									method=RequestMethod.GET)
