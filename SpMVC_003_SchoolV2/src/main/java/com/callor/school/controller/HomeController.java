@@ -1,5 +1,7 @@
 package com.callor.school.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -22,12 +24,18 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("나는 home method 입니다");
+		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		model.addAttribute("serverTime", "2022-04-21 13:11");
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
+	
 	
 	
 }

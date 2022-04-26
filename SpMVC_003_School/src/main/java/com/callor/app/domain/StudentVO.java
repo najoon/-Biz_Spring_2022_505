@@ -8,7 +8,6 @@ public class StudentVO {
 	private String stTel;
 	private String stAddr;
 	private String stDept;
-	
 	public String getStNum() {
 		return stNum;
 	}
@@ -46,11 +45,13 @@ public class StudentVO {
 		this.stDept = stDept;
 	}
 	@Override
-	//toString : 값이 정상 저장되었는가 확인 메서드
 	public String toString() {
 		return "StudentVO [stNum=" + stNum + ", stName=" + stName + ", intGrade=" + intGrade + ", stTel=" + stTel
 				+ ", stAddr=" + stAddr + ", stDept=" + stDept + "]";
 	}
+	
+	
+	
 	
 	
 

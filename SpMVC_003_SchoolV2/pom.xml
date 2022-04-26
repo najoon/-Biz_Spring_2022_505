@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.callor</groupId>
 	<artifactId>school</artifactId>
-	<name>SpMVC_003_SchoolV2</name>
+	<name>spMVC_003_SchoolV2</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -53,6 +53,7 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.11</version>
 		</dependency>
+
 
 		<!-- Servlet -->
 		<dependency>
