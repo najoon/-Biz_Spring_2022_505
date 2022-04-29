@@ -74,7 +74,7 @@ public class StudentDao {
 			pStr = dbConn.prepareStatement(spl);
 			pStr.setString(1, stNum);
 			ResultSet rSet = pStr.executeQuery();
-			
+			rSet.next();
 			StudentVO stVO = new StudentVO();
 			stVO.setStNum(rSet.getString(DBContract.ST_COL.ST_NUM));
 			stVO.setStName(rSet.getString(DBContract.ST_COL.ST_NAME));

@@ -36,7 +36,7 @@ color: blue;
 		</tr>
 		<tr>
 		<th>학과</th><td>${ST.stDept}</td>
-		<th>학년</th><td>${ST.stGrade}</td>
+		<th>학년</th><td>${ST.intGrade}</td>
 		</tr>
 		<tr>
 		<th>전화번호</th><td>${ST.stTel}</td>
