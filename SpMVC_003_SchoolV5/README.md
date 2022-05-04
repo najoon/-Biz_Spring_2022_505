@@ -1,5 +1,5 @@
 # Spring Mybatis Project
-* SpringMVC Projecdt 와 Oracle,MySql 등 dbms 와 연동하는 project
+* SpringMVC Projecdt 와 Oracle,MySql 등 DBMS 와 연동하는 project
 ## Dependency 설정
 ### spring-jdbc
 * spring-jdbc 는 spring-webmvc 와 ```version을 일치``` 시켜야 한다
