@@ -24,7 +24,7 @@ legend {
 form div {
 	width: 80%;
 	margin: 5px auto;
-	display: fiex;
+	display: flex;
 }
 
 form label, form input {
@@ -40,34 +40,43 @@ form label {
 
 form input {
 	flex: 3;
-	width: 65%;
 	margin-left: 5px;
 }
 
 form div:last-of-type {
-	justify-content :flex-end;
-	margin:10px auto;
+	justify-content: flex-end;
+	margin: 10px auto;
 }
 
-form div:first-of-type input{
-	flex:2;
-	margin-right: 10px;	
+form div:first-of-type div {
+	flex: 3;
+	margin:0px;
 }
-form div:first-of-type button{
-	flex:1;
+
+form div:first-of-type input {
+	flex:1;	
+	margin:0px;
 }
+form div:first-of-type button {
+	margin-left:5px;
+}
+
+
 </style>
 <script>
-const rootPath = "${rootPath}"
+	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/std_input.js?ver=2022-05-10-012"></script>
+<script src="${rootPath}/static/js/std_input_save.js?ver=2022-05-13-001"></script>
+<script src="${rootPath}/static/js/std_input.js?ver=2022-05-13-001"></script>
 <form method="POST">
 	<fieldset>
 		<legend>학생정보 등록</legend>
 		<div>
-			<label>학번</label> 
-			<input type="text" name="st_num">
-			<button type ="button" class="btn-green std-num-check">중복검사</button>
+			<label>학번</label>
+			<div>
+				<input type="text" name="st_num">
+				<button type="button" class="btn-green std-num-check">중복검사</button>
+			</div>
 		</div>
 		<div>
 			<label>이름</label> <input type="text" name="st_name">
@@ -85,7 +94,7 @@ const rootPath = "${rootPath}"
 			<label>주소</label> <input type="text" name="st_addr">
 		</div>
 		<div>
-			<button type="button" class="btn-blue std_save">저장</button>
+			<button type="button" class="btn-blue std-save">저장</button>
 		</div>
 	</fieldset>
 </form>

@@ -32,3 +32,4 @@
 	<button class="btn-green std-input">학생정보 등록</button>
 </div>
 
+

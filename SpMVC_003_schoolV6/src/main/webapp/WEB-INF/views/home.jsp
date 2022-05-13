@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<c:set value="${pageContext.request.contextPath}" var="rootPath" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>학사관리</title>
-<style type="text/css">
+<style>
 * {
 	margin: 0;
 	padding: 0;
@@ -22,24 +23,26 @@ body {
 }
 
 header {
-	/*important 어떤 taj 속성보다 우선적으로 강제 적용*/
+	/* important 어떤 tag 속성보다 우선적으로 강제 적용 */
 	background-color: green !important;
 	padding: 2rem;
 	font-weight: 900;
 	/*
-	header tag 에 속성을 지정하면 header 
-	가 감싸고 있는 tag 들에게 속성이
-	 상속되어 공통으로 적용 
-	*/
+			header tag 에 속성을 지정하면
+			header 가 감싸고 있는 tag 들에게
+			속성이 상속되어 공통으로 적용된다
+			*/
 	text-align: center;
 	text-shadow: 1px 1px 1px black;
 	color: white;
 }
+
 /*
-a tag 의 color 속성은 부모 tag 의 속성을 상속받지 않는다.
-만약 a tag에 부모의 color 속성을 상속받고자 한다며 ㄴ
-color:inherit 속성을 부여
-*/
+		a tag 의 color 속성은
+		부모 tag 의 color 속성을 상속받지 않는다
+		만약 a tag 에 부모의 color 속성을 상속받고자 한다면
+		color:inherit 속성을 부여하면 된다
+		*/
 header a {
 	color: inherit;
 }
@@ -60,7 +63,7 @@ nav li {
 
 nav li:hover {
 	cursor: pointer;
-	color: black;
+	color: yellow;
 	font-weight: 900;
 }
 
@@ -88,16 +91,15 @@ footer {
 }
 
 button {
-	
 	border: none;
 	outline: none;
-	padding:12px 16px;
-	border-radius: 5px;	
+	padding: 12px 16px;
+	border-radius: 5px;
+}
+button:hover {
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.7);
 }
 
-button:hover {
-	box-shadow : 2px 2px 2px rgba(0,0,0,0.7);
-}
 button.btn-blue {
 	background-color: blue;
 	color: white;
@@ -115,10 +117,15 @@ button.btn-orange {
 	color: white;
 }
 
+
+
+
+
+
 </style>
 <script>
-	//jsp 의 속성(변수) 값을 js 로 보내기 위해 
-	//js 변수로 선언
+	// jsp 의 속성(변수)값을 JS 로 보내기 위해
+	// JS 변수로 선언
 	const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/js/nav.js?ver=2022-05-10-001"></script>
@@ -128,10 +135,9 @@ button.btn-orange {
 		<h1>학사관리 시스템</h1>
 		<p>대한고교 학사관리 시스템 2022</p>
 	</header>
-
 	<nav>
 		<ul>
-			<li>home</li>
+			<li>HOME</li>
 			<li>학생정보</li>
 			<li>성적정보</li>
 			<li>로그인</li>
@@ -139,6 +145,13 @@ button.btn-orange {
 		</ul>
 	</nav>
 	<section class="main">
+
+		<%
+		/*
+				주석은 여기에
+				
+				*/
+		%>
 		<c:choose>
 			<c:when test="${LAYOUT == 'ST_LIST'}">
 				<article>
@@ -159,8 +172,7 @@ button.btn-orange {
 
 	</section>
 	<footer>
-		<address>CopyRight &copy; sk12392@naver.com</address>
+		<address>CopyRight &copy; callor@callor.com</address>
 	</footer>
 </body>
-
 </html>
