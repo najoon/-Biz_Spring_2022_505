@@ -3,7 +3,7 @@ package com.callor.school.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,17 +47,35 @@ public class UserController {
 	 * 		변수를 제거해 버린다
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(UserVO userVO,HttpSession session) {
+	public String login(UserVO userVO,HttpSession session,Model model) {
+		//로그인 폼에서 입력한 username, password 는 userVO 에 담겨 
+		// 이곳에 도착한다
 		log.debug(userVO.toString());
 		
-		userVO = userService.login(userVO);
-		if(userVO == null) {
-			session.removeAttribute("USER");
-		} else {
-			session.setAttribute("USER", userVO);
+		String loginMessage = null;
+		//로그인 폼에서 전송된 데이터중 username 으로
+		UserVO loginUserVO = userService.findById(userVO.getUsername()); 
+		// username 이 가입된 적이 없을때
+		if(loginUserVO == null) {
+			
+			loginMessage = "USERNAME FAIL";
+		}else // else if
+		// username 은 있는데 password 가 다를경우
+		if(!loginUserVO.getPassword().equals(userVO.getPassword())) {
+			loginMessage = "PASSWORD FAIL";
+			
 		}
-		return null;
+		
+		// 로그인 되었는지 그렇지 않은지 세션에 setting
+		if(loginMessage == null) {
+			session.setAttribute("USER", loginUserVO);
+		} else {
+			session.removeAttribute("USER");
+		}
+		model.addAttribute("LOGIN_MESSAGE",loginMessage);
+		return "user/login_ok";
 	}
+	
 	
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public String logout(HttpSession session) {
@@ -86,6 +104,22 @@ public class UserController {
 		return null;
 		
 	}
+	@RequestMapping(value="/join", method=RequestMethod.POST)
+	public String join(UserVO userVO){
+		
+		log.debug("JOIN");
+		log.debug(userVO.toString());
+		userService.join(userVO);
+		/*
+		 * return "문자열" :forwqrding
+		 * => views/문자열.jsp를 renfering 하라
+		 * 
+		 * return "redierct:/url : pass,toss, rederct"
+		 * => 서버의 localhost:8080/url 릏 다시 requst 하라
+		 * => web browse 주소창에 
+		 */
+		return "redirect:/user/login";
+	}
 	
 	/*
 	 * /username 중복검사를 하기 위하여 보통 다음같은 요청을 수행한다
@@ -97,15 +131,23 @@ public class UserController {
 	 * 	 
 	 */
 	@ResponseBody
-	@RequestMapping(value="/idcheck/{username}",method=RequestMethod.GET)
-	public String idcheck(@PathVariable("username")  String username) {
+	@RequestMapping(value="/idcheck/{username:.+}",method=RequestMethod.GET)
+	public String idcheck(@PathVariable String username) {
+		UserVO userVO = userService.findById(username);
 		
-		if(username.equals("callor")) {
-			return "FAIL";
-		}else {
+		// if(username.equalsIgnoreCase(userVO.getUsername()))
+		// if(userVO.getUsername().equalsIgnoreCase(username)) {
+			//return "FAIL";
+		//}else {
+			//return "OK";
+		//}
+		if(userVO == null) {
 			return "OK";
+			
+		}else {
+			
+			return "FAIL";
 		}
-		
 	}
 
 }

@@ -2,10 +2,13 @@ package com.callor.school.service.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.callor.school.model.StudentVO;
 import com.callor.school.pesistance.StudentDao;
 import com.callor.school.service.StudentService;
 
+@Service
 public class StudentServiceImplV1 implements StudentService{
 
 	private final StudentDao stDao;
@@ -16,20 +19,15 @@ public class StudentServiceImplV1 implements StudentService{
 	}
 
 	public List<StudentVO> selectAll() {
-		List<StudentVO> stList = stDao.selevtAll();
+		List<StudentVO> stList = stDao.selectAll();
 		return stList;
 	}
 
-	@Override
-	public List<StudentVO> selevtAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public StudentVO findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return stDao.findById(id);
+		
 	}
 
 	@Override
@@ -49,4 +47,6 @@ public class StudentServiceImplV1 implements StudentService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 }
