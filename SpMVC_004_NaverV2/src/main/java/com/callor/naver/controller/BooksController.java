@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value="/books")
 public class BooksController {
 	
-	@Qualifier(QualirfierConfig.SERVICE.BOOKS_V1)
+	
 	private final BookService bookService;
 	
 	public BooksController(BookService bookService) {
@@ -72,6 +72,7 @@ public class BooksController {
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insert(BookVO bookVO) {
 		log.debug("도서정보 : " + bookVO.toString());
+		bookService.insert(bookVO);
 		return null;
 		
 	}

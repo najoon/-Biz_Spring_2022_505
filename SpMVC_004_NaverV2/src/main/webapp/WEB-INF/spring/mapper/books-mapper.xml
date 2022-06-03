@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- *-mapper.xml 파일 -->
+<!-- sql문을 xml 방식으로 작성하는 파일 -->
+<!-- SQL 문을 Dao 클래스에 문자열로 작성하는데 이방식은 mybatis 3.5이상에서 만 사용할 수 있다 또한 문자열로 작성하는 
+	SQL 은 상대적으로 오류가 발생할 확률이 높다 다양한 sql 문을 구현하기가 다소 불편하다 xml방식으로sql 을 작성하는 것은 
+	전통적으로 mybatis 에서 많이 사용하고 다양한 sql 구현이 유리하다 mybatis Dao interface 와 mapper.xml 
+	파일을 조합하여 내부네서 실제 클래스를 구현한다 각 SQL 에 부착된 resultType : select, findBy@ method 
+	의 return type 을 지정 parameterType : insert, updata 의 매개변수 type 을 지정 public 
+	List<StudentVO> selectAll() public int insert(StudentVO vo) -->
+<mapper namespace="com.callor.naver.persistance.NaverDao">
+
+	<select id="selectAll" resultType="NaverVO">
+		SELECT * FROM tbl_books
+	</select>
+	<select id="findById" resultType="NaverVO">
+		SELECT * FROM tbl_books WHERE isbn = #{isbn}
+	</select>
+
+	<insert id="insert" parameterType="NaverVO">
+		INSERT INTO tbl_books
+		(
+		isbn,
+		title,
+		author,
+		publisher,
+		price,
+		discount,
+		desciption,
+		pubdata,
+		link,
+		image
+		) VALUES(
+		#{isbn},
+		#{title},
+		#{author},
+		#{publisher},
+		#{price},
+		#{discount},
+		#{desciption},
+		#{pubdata},
+		#{link},
+		#{image}
+		)
+	</insert>
+	<update id="update" parameterType="NaverVO">
+		UPDATE SET tbl_books SET
+		title = #{title},
+		author = #{author},
+		publisher = #{publisher},
+		price = #{price},
+		discount = #{discount},
+		desciption = #{desciption},
+		pubdata = #{pubdata},
+		link = #{link},
+		image = #{image}
+
+		WHERE isbn = #{isbn}
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_books WHERE isbn = #{isbn}
+	</delete>
+</mapper>
+
