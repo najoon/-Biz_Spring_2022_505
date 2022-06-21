@@ -18,36 +18,40 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @RequestMapping(value="/bbs")
 public class BBsController {
+
+	
 	@Autowired
 	private BbsDao bbsDao;
 	
-	
 	@RequestMapping(value="/write",method=RequestMethod.GET)
 	public String write(Model model) {
-	Date date = new Date(System.currentTimeMillis());
-	SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-	
-	BBsVO bbsVO = BBsVO.builder()
-			.b_date(dayFormat.format(date))
-			.b_time(timeFormat.format(date))
-			.b_writer("callor")
-			.build();
-			
-	model.addAttribute("BBS",bbsVO);
-	return "bbs/input";
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+		
+		BBsVO bbsVO = BBsVO.builder()
+						.b_date(dayFormat.format(date))
+						.b_time(timeFormat.format(date))
+						.b_writer("callor")
+						.build();
+		
+		log.debug(bbsVO.toString());
+		model.addAttribute("BBS",bbsVO);
+		return "bbs/input";
 		
 	}
 	
 	@RequestMapping(value="/write",method=RequestMethod.POST)
 	public String write(BBsVO bbsVO) {
+		
 		log.debug("=".repeat(100));
 		log.debug("INSERT 전 {}", bbsVO.getB_seq());
 		bbsDao.insert(bbsVO);
 		log.debug("INSERT 후 {}", bbsVO.getB_seq());
-	
-		return "redirect:/";
 		
+		return "redirect:/";
 	}
-
+	
+	
 }
