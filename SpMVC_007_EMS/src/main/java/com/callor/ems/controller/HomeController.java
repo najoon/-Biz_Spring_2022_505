@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.ems.model.EmsVO;
+import com.callor.ems.service.QualifyConfig;
+import com.callor.ems.service.SandMailService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+
 public class HomeController {
+	
+	
 	@Value("#{naver['naver.username']}")
 	private String naver_username;
 	
@@ -30,6 +36,10 @@ public class HomeController {
 	
 	@Autowired
 	private StandardPBEStringEncryptor pbEnc;
+	
+	@Autowired
+	@Qualifier(QualifyConfig.SREVICE.MAIL_V1)
+	private SandMailService xMail;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(@ModelAttribute("emsVO") EmsVO emsVO, Model model) {
@@ -68,7 +78,7 @@ public class HomeController {
 			return "home";
 			
 		}
-		
+		xMail.sendMail(emsVO);
 		return "redirect:/";
 		
 	}
