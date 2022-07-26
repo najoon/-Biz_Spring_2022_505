@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.score.model.ScoreVO;
 import com.callor.score.model.StudentVO;
 import com.callor.score.service.StudentService;
 
@@ -44,6 +45,8 @@ public class StudentController {
 		return "student/input";
 		
 	}
+	
+
 
 	/*
 	 * student/update?st_num=s001 로 input form 에서 
@@ -56,11 +59,12 @@ public class StudentController {
 	public String update(StudentVO student) {
 		
 		stService.update(student);
-		String retStr = String.format("redirect:/studnet/detail?st_num=%s", student.getSt_num());
+		String retStr = String.format("redirect:/student/detail?st_num=%s", student.getSt_num());
 		return retStr;
 			
 		
 	}
+	
 	
 	// JSON type 으로 return
 	@ResponseBody
