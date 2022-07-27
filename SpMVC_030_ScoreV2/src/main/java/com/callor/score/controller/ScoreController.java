@@ -41,7 +41,7 @@ public String update(String st_num, Model model) {
 // 한개의 form 에 다수의 input 가 같은 이름으로 존재할 경우 controller 
 @RequestMapping(value="/update",method = RequestMethod.POST)
 public String update(String st_num, String[] sb_code, String[] sc_score) {
-
+g
 	scoreService.updateScore(st_num, sb_code, sc_score);
 	
 return "redirect:/student/detail?st_num=" + st_num;
