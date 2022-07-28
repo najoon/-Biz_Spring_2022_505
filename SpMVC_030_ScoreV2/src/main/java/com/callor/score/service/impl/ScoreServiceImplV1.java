@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.callor.score.model.ScoreVO;
 import com.callor.score.persistance.ScoreDao;
+import com.callor.score.persistance.ScoreUpdateVO;
 import com.callor.score.service.ScoreService;
 
 @Service
@@ -70,6 +71,12 @@ public class ScoreServiceImplV1 implements ScoreService{
 			
 		}
 		return ret;
+	}
+
+	@Override
+	public int updateScore(ScoreUpdateVO score) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
